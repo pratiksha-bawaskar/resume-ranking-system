@@ -5,8 +5,14 @@ WORKDIR /app
 COPY . .
 
 RUN chmod +x mvnw
-RUN ./mvnw clean install -DskipTests
+
+# build jar
+RUN ./mvnw clean package -DskipTests
+
+# check jar (debug)
+RUN ls target
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "target/ranking-service-0.0.1-SNAPSHOT.jar"]
+# auto detect jar
+CMD ["sh", "-c", "java -jar target/*.jar"]
