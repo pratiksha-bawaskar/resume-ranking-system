@@ -1,23 +1,27 @@
 import axios from "axios";
 
-const BASE_URL = "https://resume-ranking-system-ux0j.onrender.com";
+// ✅ अलग-अलग services के URLs
+const USER_URL = "https://user-service-5k6b.onrender.com";
+const RANKING_URL = "https://resume-ranking-system-ux0j.onrender.com";
 
-// ❌ अभी ये services deploy नहीं हैं
-export const createUser = async () => {
-  throw new Error("User service not deployed yet");
+// ✅ CREATE USER
+export const createUser = async (user) => {
+  const res = await axios.post(`${USER_URL}/users`, user);
+  return res.data;
 };
 
+// ❌ Resume अभी deploy नहीं हुआ
 export const uploadResume = async () => {
   throw new Error("Resume service not deployed yet");
 };
 
 // ✅ GET RANKING
 export const getRanking = async () => {
-  const res = await axios.get(`${BASE_URL}/ranking`);
+  const res = await axios.get(`${RANKING_URL}/ranking`);
   return res.data;
 };
 
-// ❌ Not available
+// ❌ अभी APIs available नहीं
 export const deleteAllData = async () => {
   throw new Error("Delete API not available");
 };
@@ -32,6 +36,6 @@ export const getResumeSuggestion = async () => {
 
 // ✅ DOWNLOAD REPORT
 export const downloadReportAPI = async () => {
-  const response = await fetch(`${BASE_URL}/ranking/download-report`);
+  const response = await fetch(`${RANKING_URL}/ranking/download-report`);
   return await response.blob();
 };
