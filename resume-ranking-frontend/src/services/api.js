@@ -6,8 +6,19 @@ const RANKING_URL = "https://resume-ranking-system-ux0j.onrender.com";
 
 // ✅ CREATE USER
 export const createUser = async (user) => {
-  const res = await axios.post(`${USER_URL}/users`, user);
-  return res.data;
+  try {
+    const res = await axios.post(`${USER_URL}/users`, user);
+    return res.data;
+  } catch (error) {
+    console.error("FULL ERROR:", error);
+    
+    // 🔥 IMPORTANT FIX
+    if (error.response) {
+      throw new Error(error.response.data.message || "Server error");
+    } else {
+      throw new Error(error.message);
+    }
+  }
 };
 
 // ❌ Resume अभी deploy नहीं हुआ
