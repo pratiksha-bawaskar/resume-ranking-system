@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import com.pratiksha.user_service.entity.User;
 import com.pratiksha.user_service.repository.UserRepository;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/users")
 public class UserController {
