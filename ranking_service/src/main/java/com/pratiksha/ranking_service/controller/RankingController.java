@@ -1,26 +1,26 @@
 package com.pratiksha.ranking_service.controller;
 
-import com.pratiksha.ranking_service.entity.Ranking;
-import com.pratiksha.ranking_service.service.RankingService;
-
-import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.*;
+import com.pratiksha.ranking_service.service.RankingService;
+
+import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/ranking")
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class RankingController {
 
     @Autowired
     private RankingService rankingService;
 
-    // ✅ FIXED: अब service call होगा
+    // ✅ GET RANKING
     @GetMapping
     public List<Map<String, Object>> getRanking() {
         return rankingService.getRankingFromResumeService();
@@ -36,7 +36,7 @@ public class RankingController {
         List<Map<String, Object>> rankingList = rankingService.getRankingFromResumeService();
 
         PrintWriter writer = response.getWriter();
-        writer.println("ResumeId,Score,Remarks");
+        writer.println("UserId,Score,Suggestion");
 
         for (Map<String, Object> r : rankingList) {
 

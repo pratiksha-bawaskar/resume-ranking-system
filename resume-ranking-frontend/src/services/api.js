@@ -2,46 +2,36 @@ import axios from "axios";
 
 const BASE_URL = "https://resume-ranking-system-ux0j.onrender.com";
 
-// CREATE USER
-export const createUser = async (user) => {
-  const res = await axios.post(`${BASE_URL}/users`, user);
-  return res.data;
+// ❌ अभी ये services deploy नहीं हैं
+export const createUser = async () => {
+  throw new Error("User service not deployed yet");
 };
 
-// UPLOAD RESUME
-export const uploadResume = async (formData) => {
-  const res = await axios.post(`${BASE_URL}/resumes/upload`, formData, {
-    headers: { "Content-Type": "multipart/form-data" },
-  });
-  return res.data;
+export const uploadResume = async () => {
+  throw new Error("Resume service not deployed yet");
 };
 
-// GET RANKING
+// ✅ GET RANKING
 export const getRanking = async () => {
-  const res = await axios.get(`${BASE_URL}/resumes/ranking`);
+  const res = await axios.get(`${BASE_URL}/ranking`);
   return res.data;
 };
 
-// DELETE
+// ❌ Not available
 export const deleteAllData = async () => {
-  const res = await axios.delete(`${BASE_URL}/resumes/deleteAll`);
-  return res.data;
+  throw new Error("Delete API not available");
 };
 
-// SCORE
 export const getResumeScore = async () => {
-  const res = await axios.get(`${BASE_URL}/resumes/score`);
-  return res.data;
+  throw new Error("Score API not available");
 };
 
-// SUGGESTION
 export const getResumeSuggestion = async () => {
-  const res = await axios.get(`${BASE_URL}/resumes/improve`);
-  return res.data;
+  throw new Error("Suggestion API not available");
 };
 
-// DOWNLOAD
+// ✅ DOWNLOAD REPORT
 export const downloadReportAPI = async () => {
-  const response = await fetch(`${BASE_URL}/resumes/download-report`);
+  const response = await fetch(`${BASE_URL}/ranking/download-report`);
   return await response.blob();
 };
