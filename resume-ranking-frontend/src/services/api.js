@@ -12,7 +12,15 @@ export const createUser = async (user) => {
 
 // ✅ UPLOAD RESUME
 export const uploadResume = async (formData) => {
-  const res = await axios.post(`${RESUME_URL}/resume/upload`, formData);
+  const res = await axios.post(
+    `${RESUME_URL}/resume/upload`,
+    formData,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
   return res.data;
 };
 
