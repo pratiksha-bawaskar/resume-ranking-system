@@ -15,7 +15,17 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/ranking")
-@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
+@CrossOrigin(
+    origins = "https://resume-ranking-app.netlify.app",
+    allowedHeaders = "*",
+    methods = {
+        RequestMethod.GET,
+        RequestMethod.POST,
+        RequestMethod.PUT,
+        RequestMethod.DELETE,
+        RequestMethod.OPTIONS
+    }
+)
 public class RankingController {
 
     // ✅ GET RANKING (Dummy Data)
