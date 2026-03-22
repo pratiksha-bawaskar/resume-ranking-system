@@ -1,4 +1,4 @@
-package com.pratiksha.user_service.UserController;
+package com.pratiksha.user_service.controller;
 
 import java.util.List;
 
@@ -18,7 +18,6 @@ public class UserController {
 
     @PostMapping
     public User createUser(@RequestBody User user) {
-        System.out.println("Incoming User: " + user.getName());
         return user;
     }
 
