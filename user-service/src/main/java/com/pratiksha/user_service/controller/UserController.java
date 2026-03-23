@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pratiksha.user_service.entity.User;
 
- @CrossOrigin(origins = "https://resume-ranking-app.netlify.app")
+@CrossOrigin(origins = "https://resume-ranking-app.netlify.app")
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UserController {
 
     @PostMapping
@@ -22,20 +22,17 @@ public class UserController {
         return user;
     }
 
-    @CrossOrigin(origins = "https://resume-ranking-app.netlify.app")
     @GetMapping
     public List<User> getUsers() {
         return List.of();
     }
 
-    // 🔥 IMPORTANT: handle preflight request
     @RequestMapping(method = RequestMethod.OPTIONS)
     public void handleOptions() {
-        // empty but required
     }
 
     @GetMapping("/test")
     public String test() {
-    return "User Service Working 🚀";
-}
+        return "User Service Working 🚀";
+    }
 }
