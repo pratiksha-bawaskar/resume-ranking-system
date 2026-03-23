@@ -13,8 +13,8 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("https://resume-ranking-app.netlify.app")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+                        .allowedOrigins("*")   // 🔥 TEMP for testing
+                        .allowedMethods("*")
                         .allowedHeaders("*");
             }
         };
