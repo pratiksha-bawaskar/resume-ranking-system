@@ -33,4 +33,9 @@ public class UserController {
     public void handleOptions() {
         // empty but required
     }
+
+    @GetMapping("/test")
+    public String test() {
+    return "User Service Working 🚀";
+}
 }
