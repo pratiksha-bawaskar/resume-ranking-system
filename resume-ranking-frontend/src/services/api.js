@@ -7,8 +7,13 @@ const RESUME_URL = "https://resume-service-y9za.onrender.com";
 
 // CREATE USER
 export const createUser = async (user) => {
-  const res = await axios.post(USER_URL, user);
-  return res.data;
+  try {
+    const res = await axios.post(USER_URL, user);
+    return res.data;
+  } catch (error) {
+    console.error("CREATE USER ERROR:", error);
+    throw new Error("Error creating user");
+  }
 };
 
 // UPLOAD RESUME
