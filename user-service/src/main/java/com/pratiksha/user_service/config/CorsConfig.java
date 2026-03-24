@@ -16,7 +16,7 @@ public class CorsConfig {
 
                 registry.addMapping("/**")
                         .allowedOrigins("https://resume-ranking-app.netlify.app")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedMethods("*")
                         .allowedHeaders("*");
             }
         };
