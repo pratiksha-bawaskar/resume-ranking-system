@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const USER_URL = "https://api-gateway-357r.onrender.com/api/users";
+// 🔥 DIRECT SERVICES (no gateway for now)
+const USER_URL = "https://user-service-5k5b.onrender.com/users";
 const RANKING_URL = "https://resume-ranking-system-ux0j.onrender.com";
 const RESUME_URL = "https://resume-service-y9za.onrender.com";
 
