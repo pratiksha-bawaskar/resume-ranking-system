@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pratiksha.user_service.entity.User;
 
-@CrossOrigin(origins = "https://resume-ranking-app.netlify.app")
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/users")
+@CrossOrigin(origins = "https://resume-ranking-app.netlify.app")
 public class UserController {
 
     @PostMapping
