@@ -14,7 +14,7 @@ import com.pratiksha.user_service.entity.User;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://resume-ranking-app.netlify.app")
 public class UserController {
 
     @PostMapping
