@@ -1,4 +1,4 @@
-import { getResumeScore, getResumeSuggestion } from "../services/api";
+import { getRanking } from "../services/api";
 
 class ActionProvider {
   constructor(createChatBotMessage, setStateFunc) {
@@ -13,50 +13,37 @@ class ActionProvider {
     }));
   };
 
-  // ✅ SCORE (FIXED)
- handleCheckScore = async () => {
-  try {
-    const typing = this.createChatBotMessage("⏳ Analyzing resume...");
-    this.addMessageToState(typing);
+  // ✅ SCORE USING RANKING
+  handleCheckScore = async () => {
+    try {
+      const typing = this.createChatBotMessage("⏳ Checking score...");
+      this.addMessageToState(typing);
 
-    const res = await getResumeScore(); // ✅ CORRECT
+      const data = await getRanking();
 
-    setTimeout(() => {
+      let score = data.length > 0 ? data[0].score : 0;
+
       const message = this.createChatBotMessage(
-        `📊 Your resume score is ${res.score}`
+        `📊 Your resume score is ${score}`
       );
+
       this.addMessageToState(message);
-    }, 1000);
 
-  } catch (error) {
-    console.error(error);
-    const message = this.createChatBotMessage("❌ Unable to fetch score");
-    this.addMessageToState(message);
-  }
-};
-
-handleImproveResume = async () => {
-  try {
-    const typing = this.createChatBotMessage("⏳ Generating suggestions...");
-    this.addMessageToState(typing);
-
-    const res = await getResumeSuggestion(); // ✅ CORRECT
-
-    setTimeout(() => {
-      const message = this.createChatBotMessage(
-        `💡 ${res.suggestion}`
-      );
+    } catch (error) {
+      console.error(error);
+      const message = this.createChatBotMessage("❌ Unable to fetch score");
       this.addMessageToState(message);
-    }, 1000);
+    }
+  };
 
-  } catch (error) {
-    console.error(error);
-    const message = this.createChatBotMessage("❌ Unable to fetch suggestion");
+  // ❌ REMOVED SUGGESTION (not implemented)
+  handleImproveResume = () => {
+    const message = this.createChatBotMessage(
+      "💡 Resume improvement feature coming soon..."
+    );
     this.addMessageToState(message);
-  }
-};
+  };
 
-  // ✅ SMART CHAT
   handleGeneralQuestion = (text = "") => {
     const lower = text.toLowerCase();
 
