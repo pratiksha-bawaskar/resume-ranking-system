@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getRanking, deleteAllData, downloadReportAPI } from "../services/api";
+import { getRanking, downloadReportAPI } from "../services/api";
 
 function Ranking(){
 
@@ -24,16 +24,21 @@ function Ranking(){
     generateRanking();
   }, []);
 
-  const clearData = async () => {
-    if (!window.confirm("Are you sure?")) return;
+  //const clearData = async () => {
+   // if (!window.confirm("Are you sure?")) return;
 
-    try {
-      await deleteAllData();
-      setRankingData([]);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+   // try {
+    //  await deleteAllData();
+     // setRankingData([]);
+   // } catch (error) {
+   //   console.error(error);
+   // }
+ // };
+
+  const clearData = () => {
+  if (!window.confirm("Are you sure?")) return;
+  setRankingData([]);
+};
 
   // ✅ FINAL DOWNLOAD FUNCTION
   const downloadReport = async () => {

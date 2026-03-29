@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getResumeScore, getResumeSuggestion } from "../services/api";
+import { getRanking } from "../services/api";
 
 function ChatbotComponent({ onClose }) {
 
@@ -11,18 +11,21 @@ function ChatbotComponent({ onClose }) {
     setMessages(prev => [...prev, { text, sender }]);
   };
 
+  // ✅ SCORE USING RANKING
   const checkScore = async () => {
     addMessage("Check my resume score", "user");
 
     try {
-      const data = await getResumeScore(); // ✅ FIXED
+      const data = await getRanking();
 
-      addMessage(`📊 Your score is ${data.score}`, "bot");
+      let score = data.length > 0 ? data[0].score : 0;
 
-      if (data.score > 80) {
+      addMessage(`📊 Your score is ${score}`, "bot");
+
+      if (score > 80) {
         addMessage("🔥 Excellent! You are a strong candidate.", "bot");
       } 
-      else if (data.score > 60) {
+      else if (score > 60) {
         addMessage("👍 Good, but you can improve some skills.", "bot");
       } 
       else {
@@ -34,15 +37,10 @@ function ChatbotComponent({ onClose }) {
     }
   };
 
-  const improveResume = async () => {
+  // ❌ REMOVED (not implemented)
+  const improveResume = () => {
     addMessage("How to improve resume?", "user");
-
-    try {
-      const data = await getResumeSuggestion(); // ✅ FIXED
-      addMessage("💡 " + data.suggestion, "bot");
-    } catch {
-      addMessage("❌ Error fetching suggestion", "bot");
-    }
+    addMessage("💡 Feature coming soon...", "bot");
   };
 
   const howRankingWorks = () => {
