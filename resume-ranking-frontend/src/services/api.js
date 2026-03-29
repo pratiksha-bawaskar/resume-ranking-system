@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://api-gateway-357r.onrender.com";
+const BASE_URL = "https://api-gateway-357r.onrender.com?v=2";
 
 const USER_URL = `${BASE_URL}/api/users`;
 const RESUME_URL = `${BASE_URL}/resume`;
